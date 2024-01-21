@@ -9,19 +9,19 @@ export const signup = async (req, res, next) => {
         next(errorHandler(400, 'All field are required'));
     }
 
-    const hashPassword = byscrptjs.hashSync(password, 10)
+    const hashPassword = byscrptjs.hashSync(password, 10);
 
     const newUser = new User({
         username,
         email,
-        password: hashPassword
+        password: hashPassword,
     });
 
     try {
         await newUser.save();
-        res.json({ message: "signup sucessfully" });
+        res.json("signup sucessfully");
     } catch (err) {
-        next(err)
+        next(err);
     }
 
-}
+};
